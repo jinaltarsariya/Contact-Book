@@ -18,7 +18,7 @@ export default function User_crud_operation() {
       .min(2, "Too Short!")
       .max(30, "Too Long!"),
     mobileNumber: Yup.string()
-      .matches(/^[0-9]{10}$/, "Mobile Number must be 10 digits")
+      .matches(/^[0-9]{6,10}$/, "Mobile Number must be 10 digits")
       .required("Mobile Number is required"),
   });
 
@@ -124,9 +124,9 @@ export default function User_crud_operation() {
   };
 
   return (
-    <>
-      <div className="container">
-        <div className="border border-3 p-3 my-3">
+    <div style={{ backgroundColor: "#8CB9BD", minHeight: "100vh" }}>
+      <div className="container py-5">
+        <div className="border border-3 p-3">
           <h3 className="text-center text-decoration-underline mb-3">
             Add Contact
           </h3>
@@ -136,7 +136,7 @@ export default function User_crud_operation() {
             validationSchema={ContactValidation}
             enableReinitialize={true}
           >
-            <Form className="row">
+            <Form className="row g-3">
               <div className="col-md-6">
                 <label htmlFor="name" className="form-label">
                   Contact Name
@@ -180,22 +180,22 @@ export default function User_crud_operation() {
           <h3 className="text-center text-decoration-underline mb-3">
             Contact List
           </h3>
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">No</th>
-                <th scope="col">Contact Name</th>
-                <th scope="col">Mobile Number</th>
-                <th scope="col">Created At</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {contactData && contactData.length > 0 ? (
-                contactData.map((value, index) => {
-                  return (
-                    <>
-                      <tr>
+          <div className="table-responsive">
+            <table className="table">
+              <thead>
+                <tr>
+                  <th scope="col">No</th>
+                  <th scope="col">Contact Name</th>
+                  <th scope="col">Mobile Number</th>
+                  <th scope="col">Created At</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {contactData && contactData.length > 0 ? (
+                  contactData.map((value, index) => {
+                    return (
+                      <tr key={value._id}>
                         <th scope="row">{index + 1}</th>
                         <td>{value.name}</td>
                         <td>{value.mobileNumber}</td>
@@ -230,20 +230,20 @@ export default function User_crud_operation() {
                           </button>
                         </td>
                       </tr>
-                    </>
-                  );
-                })
-              ) : (
-                <tr className="text-center">
-                  <td colSpan="5">
-                    <h3 className="py-3">No Contact available</h3>
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                    );
+                  })
+                ) : (
+                  <tr className="text-center">
+                    <td colSpan="5">
+                      <h3 className="py-3">No Contact available</h3>
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

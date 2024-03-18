@@ -32,7 +32,7 @@ export default function User_Signup() {
       ),
     mobileNumber: Yup.string()
       .required("Mobile number is Required !")
-      .matches(/^[0-9]{10}$/, "Mobile number must be 10 digits !"),
+      .matches(/^[0-9]{6,10}$/, "Mobile number must be 10 digits !"),
     password: Yup.string()
       .required("Password is Required !")
       .min(8, "Password must be at least 8 characters"),
@@ -63,32 +63,36 @@ export default function User_Signup() {
   };
 
   return (
-    <>
+    <div style={{ backgroundColor: "#8CB9BD", minHeight: "100vh" }}>
       <Formik
         initialValues={intialValue}
         validationSchema={UserValidation}
         onSubmit={handleUserSignupData}
       >
         <Form>
-          <section class="vh-100" style={{ backgroundColor: "#8CB9BD" }}>
-            <div class="container">
-              <div class="row d-flex justify-content-center align-items-center">
-                <div class="col-xl-8">
-                  <h3 class="text-white my-4 text-center">Registration Form</h3>
-                  <div class="card" style={{ borderRadius: "15px" }}>
-                    <div class="card-body pt-4 p-2">
-                      <div class="row align-items-center">
-                        <div class="col-md-3 ps-5">
-                          <h6 class="mb-0">
-                            <label htmlFor="username">Username</label>
+          <section>
+            <div className="container">
+              <div className="row d-flex justify-content-center align-items-center">
+                <div className="col-xl-8">
+                  <h3 className="text-white my-4 text-center">
+                    Registration Form
+                  </h3>
+                  <div className="card" style={{ borderRadius: "15px" }}>
+                    <div className="card-body pt-4 p-2">
+                      <div className="row align-items-center">
+                        <div className="col-md-3 ps-5">
+                          <h6 className="mb-0">
+                            <label htmlFor="username" className="form-label">
+                              Username
+                            </label>
                           </h6>
                         </div>
-                        <div class="col-md-9 pe-5">
+                        <div className="col-md-9 pe-5">
                           <Field
                             id="username"
                             name="username"
                             placeholder="Username"
-                            class="form-control"
+                            className="form-control"
                           />
                           <div className="text-danger">
                             <ErrorMessage name="username" />
@@ -96,20 +100,22 @@ export default function User_Signup() {
                         </div>
                       </div>
 
-                      <hr class="m-3" />
+                      <hr className="my-3" />
 
-                      <div class="row align-items-center">
-                        <div class="col-md-3 ps-5">
-                          <h6 class="mb-0">
-                            <label htmlFor="email">Email</label>
+                      <div className="row align-items-center">
+                        <div className="col-md-3 ps-5">
+                          <h6 className="mb-0">
+                            <label className="form-label" htmlFor="email">
+                              Email
+                            </label>
                           </h6>
                         </div>
-                        <div class="col-md-9 pe-5">
+                        <div className="col-md-9 pe-5">
                           <Field
                             id="email"
                             name="email"
                             placeholder="example@example.com"
-                            class="form-control"
+                            className="form-control"
                           />
                           <div className="text-danger">
                             <ErrorMessage name="email" />
@@ -117,20 +123,25 @@ export default function User_Signup() {
                         </div>
                       </div>
 
-                      <hr class="m-3" />
+                      <hr className="my-3" />
 
-                      <div class="row align-items-center">
-                        <div class="col-md-3 ps-5">
-                          <h6 class="mb-0">
-                            <label htmlFor="mobileNumber">Mobile Number</label>
+                      <div className="row align-items-center">
+                        <div className="col-md-3 ps-5">
+                          <h6 className="mb-0">
+                            <label
+                              className="form-label"
+                              htmlFor="mobileNumber"
+                            >
+                              Mobile Number
+                            </label>
                           </h6>
                         </div>
-                        <div class="col-md-9 pe-5">
+                        <div className="col-md-9 pe-5">
                           <Field
                             id="mobileNumber"
                             name="mobileNumber"
                             placeholder="1234567890"
-                            class="form-control"
+                            className="form-control"
                           />
                           <div className="text-danger">
                             <ErrorMessage name="mobileNumber" />
@@ -138,20 +149,23 @@ export default function User_Signup() {
                         </div>
                       </div>
 
-                      <hr class="m-3" />
+                      <hr className="my-3" />
 
-                      <div class="row align-items-center">
-                        <div class="col-md-3 ps-5">
-                          <h6 class="mb-0">
-                            <label htmlFor="password">Password</label>
+                      <div className="row align-items-center">
+                        <div className="col-md-3 ps-5">
+                          <h6 className="mb-0">
+                            <label className="form-label" htmlFor="password">
+                              Password
+                            </label>
                           </h6>
                         </div>
-                        <div class="col-md-9 pe-5">
+                        <div className="col-md-9 pe-5">
                           <Field
+                            type="password"
                             id="password"
                             name="password"
                             placeholder="Password"
-                            class="form-control"
+                            className="form-control"
                           />
                           <div className="text-danger">
                             <ErrorMessage name="password" />
@@ -159,22 +173,26 @@ export default function User_Signup() {
                         </div>
                       </div>
 
-                      <hr class="m-3" />
+                      <hr className="my-3" />
 
-                      <div class="row align-items-center">
-                        <div class="col-md-3 ps-5">
-                          <h6 class="mb-0">
-                            <label htmlFor="confirmPassword">
+                      <div className="row align-items-center">
+                        <div className="col-md-3 ps-5">
+                          <h6 className="mb-0">
+                            <label
+                              className="form-label"
+                              htmlFor="confirmPassword"
+                            >
                               Confirm Password
                             </label>
                           </h6>
                         </div>
-                        <div class="col-md-9 pe-5">
+                        <div className="col-md-9 pe-5">
                           <Field
+                            type="password"
                             id="confirmPassword"
                             name="confirmPassword"
                             placeholder="Confirm Password"
-                            class="form-control"
+                            className="form-control"
                           />
                           <div className="text-danger">
                             <ErrorMessage name="confirmPassword" />
@@ -182,15 +200,27 @@ export default function User_Signup() {
                         </div>
                       </div>
 
-                      <hr class="m-3" />
+                      <hr className="my-3" />
 
-                      <div class="px-5 pb-2">
+                      <div className="px-5 pb-2 d-flex justify-content-between">
                         <button
                           type="submit"
-                          class="btn btn-primary"
+                          className="btn btn-primary"
                           id="userSignUpBtn"
                         >
-                          Submit
+                          Signup
+                        </button>
+                        <button
+                          type="submit"
+                          className="btn btn-primary ms-1"
+                          id="userSignUpBtn"
+                        >
+                          <a
+                            href="/"
+                            className="text-light text-decoration-none"
+                          >
+                            Go to login page
+                          </a>
                         </button>
                       </div>
                     </div>
@@ -201,6 +231,6 @@ export default function User_Signup() {
           </section>
         </Form>
       </Formik>
-    </>
+    </div>
   );
 }

@@ -39,33 +39,37 @@ export default function User_login() {
   };
 
   return (
-    <>
+    <div style={{ backgroundColor: "#8CB9BD", minHeight: "100vh" }}>
       <Formik
         initialValues={intialValue}
         validationSchema={UserLoginValidation}
         onSubmit={handleUserLoginData}
       >
         <Form>
-          <section class="vh-100" style={{ backgroundColor: "#8CB9BD" }}>
-            <div class="container">
-              <div class="row d-flex justify-content-center align-items-center">
-                <div class="col-xl-7">
-                  <h2 class="text-white mt-5 mb-3 text-center">Login Form</h2>
+          <section>
+            <div className="container">
+              <div className="row d-flex justify-content-center align-items-center">
+                <div className="col-xl-7">
+                  <h2 className="text-white mt-5 mb-3 text-center">
+                    Login Form
+                  </h2>
 
-                  <div class="card" style={{ borderRadius: "15px" }}>
-                    <div class="card-body p-5">
-                      <div class="row align-items-center">
-                        <div class="col-md-3 ps-5">
-                          <h6 class="mb-0">
-                            <label htmlFor="username">Username</label>
+                  <div className="card" style={{ borderRadius: "15px" }}>
+                    <div className="card-body p-5">
+                      <div className="row align-items-center">
+                        <div className="col-md-3 ps-5">
+                          <h6 className="mb-0">
+                            <label className="form-label" htmlFor="username">
+                              Username
+                            </label>
                           </h6>
                         </div>
-                        <div class="col-md-9 pe-5">
+                        <div className="col-md-9 pe-5">
                           <Field
                             id="username"
                             name="username"
                             placeholder="Username"
-                            class="form-control"
+                            className="form-control"
                           />
                           <div className="text-danger">
                             <ErrorMessage name="username" />
@@ -73,20 +77,23 @@ export default function User_login() {
                         </div>
                       </div>
 
-                      <hr class="m-4" />
+                      <hr className="my-4" />
 
-                      <div class="row align-items-center">
-                        <div class="col-md-3 ps-5">
-                          <h6 class="mb-0">
-                            <label htmlFor="password">Password</label>
+                      <div className="row align-items-center">
+                        <div className="col-md-3 ps-5">
+                          <h6 className="mb-0">
+                            <label className="form-label" htmlFor="password">
+                              Password
+                            </label>
                           </h6>
                         </div>
-                        <div class="col-md-9 pe-5">
+                        <div className="col-md-9 pe-5">
                           <Field
+                            type="password"
                             id="password"
                             name="password"
                             placeholder="Password"
-                            class="form-control"
+                            className="form-control"
                           />
                           <div className="text-danger">
                             <ErrorMessage name="password" />
@@ -94,30 +101,38 @@ export default function User_login() {
                         </div>
                       </div>
 
-                      <hr class="m-4" />
+                      <hr className="my-4" />
 
-                      <div class="px-5 mt-4">
+                      <div className="px-5 mt-4 d-flex justify-content-between">
                         <button
                           type="submit"
-                          class="btn btn-primary"
+                          className="btn btn-primary"
                           id="userSignUpBtn"
                         >
                           Login
                         </button>
+
+                        <button
+                          type="submit"
+                          className="btn btn-primary ms-1"
+                          id="userSignUpBtn"
+                        >
+                          <a
+                            href="/signup"
+                            className="text-light text-decoration-none"
+                          >
+                            Go to signup page
+                          </a>
+                        </button>
                       </div>
                     </div>
                   </div>
-                  <h3 className="text-center mt-3">
-                    <a href="/signup" className="text-dark">
-                      Sign up
-                    </a>
-                  </h3>
                 </div>
               </div>
             </div>
           </section>
         </Form>
       </Formik>
-    </>
+    </div>
   );
 }
